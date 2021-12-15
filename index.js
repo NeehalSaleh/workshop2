@@ -33,6 +33,7 @@ app.get('/fasttext/', function(req, res) {
 
 function getFastTextResults(statement) {
 	//predict returns an array with the input and predictions for best cateogires
+  let n=null;
 	FastText.predict(
 		"model.bin", 3,
 		[statement],
@@ -42,9 +43,9 @@ function getFastTextResults(statement) {
 			console.log(error)
 			return;
 		  }
-		  console.log(success)
+		  n=success;
 		})
-	return "success!";
+	return n;
 }
 
 app.listen(8000, () => {
